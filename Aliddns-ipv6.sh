@@ -17,8 +17,8 @@ die () {
     echo $1
 }
 
-ipv6s=`ip addr show ovs_bond0 | grep "inet6.*global" | awk '{print $2}' | awk -F"/" '{print $1}'` || die "$ipv6"
-# 获取IP修改为自己的网卡接口，我的为ovs_bond0
+ipv6s=`ip addr show eth0 | grep "inet6.*global" | awk '{print $2}' | awk -F"/" '{print $1}'` || die "$ipv6"
+# ifconfig获取IP修改为自己的网卡接口，我的为eth0
 for ipv6 in $ipv6s
 do
   #ipv6 = $ipv6
